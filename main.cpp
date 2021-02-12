@@ -126,14 +126,14 @@ public:
     } 
     
     vector <Node *> arr;
-    int pushElementsArray(Node *ptr, int i) 
+    int makeArrayofPointers(Node *ptr, int i) 
     { 
         if (ptr == NULL) 
             return i; 
       
-        i = pushElementsArray(ptr->left, i); 
+        i = makeArrayofPointers(ptr->left, i); 
         arr[i++] = ptr; 
-        return pushElementsArray(ptr->right, i); 
+        return makeArrayofPointers(ptr->right, i); 
     }
 
       
@@ -142,7 +142,7 @@ public:
         int n = size(u); 
         Node *p = u->parent; 
         arr.resize(n);
-        pushElementsArray(u, 0);
+        makeArrayofPointers(u, 0);
         sort(arr.begin(), arr.end(), [](Node *aa, Node* bb) { return aa->value < bb->value; });
         //for(auto i:arr)
         //{
