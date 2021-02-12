@@ -126,14 +126,14 @@ public:
     } 
     
     vector <Node *> arr;
-    int makeArrayofPointers(Node *ptr, int i) 
+    int makeArrayofPointers(Node *ptr,int i) 
     { 
-        if (ptr == NULL) 
+        if (!ptr) 
             return i; 
       
-        i = makeArrayofPointers(ptr->left, i); 
-        arr[i++] = ptr; 
-        return makeArrayofPointers(ptr->right, i); 
+        i=makeArrayofPointers(ptr->left,i); 
+        arr[i++]=ptr;
+        return makeArrayofPointers(ptr->right,i); 
     }
 
       
@@ -142,8 +142,8 @@ public:
         int n = size(u); 
         Node *p = u->parent; 
         arr.resize(n);
-        makeArrayofPointers(u, 0);
-        sort(arr.begin(), arr.end(), [](Node *aa, Node* bb) { return aa->value < bb->value; });
+        makeArrayofPointers(u,0);
+        //sort(arr.begin(), arr.end(), [](Node *aa, Node* bb) { return aa->value < bb->value; });
         //for(auto i:arr)
         //{
           //  cout<<i->value<<" ";
@@ -294,7 +294,7 @@ public:
 int main() 
 {
     ifstream input;
-	  input.open("data.txt");
+	  input.open("data3.txt");
     ScapeGoatTree sgt;
     float val;
     int choice;
